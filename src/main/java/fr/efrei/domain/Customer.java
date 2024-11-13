@@ -1,5 +1,5 @@
 package fr.efrei.domain;
-
+import java.util.Locale;
 public class Customer {
     private String lastname;
     private String firstname;
@@ -47,6 +47,7 @@ public class Customer {
     public void setEmail(String email) {
         this.email = email;
     }
+    private Customer(){}
 
     private Customer(Builder builder) {
         this.firstname= builder.firstname;
