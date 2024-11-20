@@ -4,7 +4,7 @@ import fr.efrei.domain.Salesman;
 import fr.efrei.util.Helper;
 
 public class SalesmanFactory {
-    public static Salesman buildSalesman(String firstName, String lastName, int moneyInCheckout, int numberOfSales){
+    public static Salesman buildSalesman(String firstName, String lastName, int moneyInCheckout, int numberOfSales, int id){
         if(Helper.isNullOrEmpty(firstName) || Helper.isNullOrEmpty(lastName))
             return null;
 
@@ -16,10 +16,15 @@ public class SalesmanFactory {
             return null;
         }
 
+        if(id <= 0){
+            return null;
+        }
+
             return new Salesman.Builder().setFirstName(firstName)
                     .setLastName(lastName)
                     .setMoneyInCheckout(moneyInCheckout)
                     .setNumberOfSales(numberOfSales)
+                    .setId(id)
                     .build();
     }
 }

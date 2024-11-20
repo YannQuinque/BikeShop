@@ -7,6 +7,7 @@ public class Salesman {
     private String lastName;
     private int moneyInCheckout;
     private int numberOfSales;
+    private int id;
 
     private Salesman (){}
 
@@ -15,6 +16,7 @@ public class Salesman {
         this.lastName = builder.lastName;
         this.moneyInCheckout = builder.moneyInCheckout;
         this.numberOfSales = builder.numberOfSales;
+        this.id = builder.id;
 
     }
 
@@ -34,6 +36,10 @@ public class Salesman {
         return numberOfSales;
     }
 
+    public int getId(){
+        return id;
+    }
+
     @Override
     public String toString() {
         return "Salesman{" +
@@ -41,6 +47,7 @@ public class Salesman {
                 ", lastName='" + lastName + '\'' +
                 ", moneyInCheckout=" + moneyInCheckout +
                 ", numberOfSales=" + numberOfSales +
+                ", id=" + id +
                 '}';
     }
 
@@ -49,6 +56,7 @@ public class Salesman {
         private String lastName;
         private int moneyInCheckout;
         private int numberOfSales;
+        private int id;
 
         public Builder setFirstName(String firstName) {
             this.firstName = firstName;
@@ -67,6 +75,11 @@ public class Salesman {
 
         public Builder setNumberOfSales(int numberOfSales) {
             this.numberOfSales = numberOfSales;
+            return this;
+        }
+
+        public Builder setId(int id) {
+            this.id = id;
             return this;
         }
 
