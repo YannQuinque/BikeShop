@@ -25,10 +25,11 @@ public class SalesFactory {
             return null;
         }
 
-        Sales sales = new Sales(id, date, totalAmount);
-        sales.setCustomer(customer);
-        sales.setBicycles(new ArrayList<>());
-        
-        return sales;
+        return new Sales.Builder().setId(id)
+                    .setDate(date)
+                    .setTotalAmount(totalAmount)
+                    .setCustomer(customer);
+                    .setBicycles(new ArrayList<>());
+                    .build();
     }
 }
