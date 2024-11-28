@@ -5,15 +5,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SalesRepository implements ISalesRepository {
-    private static ISalesRepository repository = null;
+    private static SalesRepository repository = null;
     private List<Sales> salesList;
 
     private SalesRepository() {
-        salesList = new ArrayList<Sales>();
+        salesList = new ArrayList<>();
     }
 
-    public static ISalesRepository getRepository() {
-        if(repository == null) {
+    public static SalesRepository getRepository() { 
+        if (repository == null) {
             repository = new SalesRepository();
         }
         return repository;
@@ -21,46 +21,55 @@ public class SalesRepository implements ISalesRepository {
 
     @Override
     public Sales create(Sales sales) {
-        boolean success = salesList.add(sales);
-        if(success) {
-            return sales;
+        if (sales == null) {
+            return null;
         }
-        return null;
+        if (read(sales.getId()) != null) {
+            return null; 
+        }
+        salesList.add(sales);
+        return sales;
     }
 
     @Override
     public Sales read(Integer id) {
-        for(Sales s : salesList) {
-            if(s.getId() == id)
-                return s;
+        if (id == null || id <= 0) {
+            return null;
         }
-        return null;
+        return salesList.stream()
+                .filter(s -> s.getId() == id)
+                .findFirst()
+                .orElse(null);
     }
 
     @Override
     public Sales update(Sales sales) {
-        int id = sales.getId();
-        Sales salesOld = read(id);
-        if(salesOld == null)
+        if (sales == null) {
             return null;
-        boolean success = delete(id);
-        if(success) {
-            if(salesList.add(sales))
-                return sales;
         }
-        return null;
+        Sales existingSales = read(sales.getId());
+        if (existingSales == null) {
+            return null;
+        }
+        delete(sales.getId());
+        salesList.add(sales);
+        return sales;
     }
 
     @Override
     public boolean delete(Integer id) {
-        Sales salesToDelete = read(id);
-        if(salesToDelete == null)
+        if (id == null || id <= 0) {
             return false;
-        return(salesList.remove(salesToDelete));
+        }
+        Sales salesToDelete = read(id);
+        if (salesToDelete == null) {
+            return false;
+        }
+        return salesList.remove(salesToDelete);
     }
 
     @Override
     public List<Sales> getall() {
-        return salesList;
+        return new ArrayList<>(salesList); 
     }
 }
