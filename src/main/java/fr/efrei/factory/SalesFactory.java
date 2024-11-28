@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class SalesFactory {
-    public static Sales buildSales(int id, Date date, float totalAmount, int idCustomer) {
+    public static Sales buildSales(int id, Date date, float totalAmount, Customer customer) {
         if (id <= 0) {
             return null;
         }
@@ -21,15 +21,15 @@ public class SalesFactory {
             return null;
         }
 
-        if (idCustomer == null) {
+        if (customer == null) {
             return null;
         }
 
         return new Sales.Builder().setId(id)
                     .setDate(date)
                     .setTotalAmount(totalAmount)
-                    .setIdCustomer(idCustomer);
-                    .setBicycles(new ArrayList<>());
+                    .setCustomer(customer)
+                    .setBicycles(new ArrayList<>())
                     .build();
     }
 }
