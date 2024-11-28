@@ -7,8 +7,8 @@ import java.util.Arrays;
 
 public class BicycleFactory {
 
-    public static Bicycle buildBicycle(int id, String brand, String model, float price, BicycleType type) {
-        if (id <= 0) {
+    public static Bicycle buildBicycle(int id, String brand, String model, float price, BicycleType type, int nbStock) {
+        if (id <= 0 || nbStock < 0) {
             return null;
         }
 
@@ -24,12 +24,14 @@ public class BicycleFactory {
             return null;
         }
 
-        return new Bicycle.Builder().setId(id)
-                    .setBrand(brand)
-                    .setModel(model)
-                    .setPrice(price)
-                    .setBicycle(type)
-                    .build();
+        return new Bicycle.Builder()
+                .setId(id)
+                .setBrand(brand)
+                .setModel(model)
+                .setPrice(price)
+                .setType(type)
+                .setNbStock(nbStock)
+                .build();
     }
 
     private static boolean isValidBicycleType(BicycleType type) {
