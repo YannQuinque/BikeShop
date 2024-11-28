@@ -1,6 +1,7 @@
 package fr.efrei.domain;
 
 import java.util.Date;
+import java.util.HashMap;
 
 public class Sales {
     private int id;
@@ -15,7 +16,7 @@ public class Sales {
         this.id = builder.id;
         this.date = builder.date;
         this.totalAmount = builder.totalAmount;
-        this.customer = builder.customer;
+        this.idCustomer = builder.idCustomer;
         this.bicycleHashMap = builder.bicycleHashMap;
     }
 
@@ -29,10 +30,6 @@ public class Sales {
 
     public float getTotalAmount() {
         return totalAmount;
-    }
-
-    public Customer getCustomer() {
-        return customer;
     }
 
     public int getIdCustomer() {
