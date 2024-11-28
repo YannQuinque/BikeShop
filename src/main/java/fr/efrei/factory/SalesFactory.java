@@ -29,7 +29,7 @@ public class SalesFactory {
                     .setDate(date)
                     .setTotalAmount(totalAmount)
                     .setIdCustomer(idCustomer)
-                    .setBicycles(new ArrayList<>())
+                    .setBicycleHashMap(new ArrayList<>())
                     .build();
     }
 }
