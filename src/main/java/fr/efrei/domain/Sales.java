@@ -4,9 +4,10 @@ import java.util.Date;
 
 public class Sales {
     private int id;
-    private Date date; 
+    private Date date;
     private float totalAmount;
-    private Customer customer;
+    private int idCustomer;
+    private HashMap<Integer, Integer> bicycleHashMap;
 
     private Sales() {}
 
@@ -15,6 +16,7 @@ public class Sales {
         this.date = builder.date;
         this.totalAmount = builder.totalAmount;
         this.customer = builder.customer;
+        this.bicycleHashMap = builder.bicycleHashMap;
     }
 
     public int getId() {
@@ -33,13 +35,22 @@ public class Sales {
         return customer;
     }
 
+    public int getIdCustomer() {
+        return idCustomer;
+    }
+
+    public HashMap<Integer, Integer> getBicycleHashMap() {
+        return bicycleHashMap;
+    }
+
     @Override
     public String toString() {
         return "Sales{" +
                 "id=" + id +
                 ", date=" + date +
                 ", totalAmount=" + totalAmount +
-                ", customer=" + customer +
+                ", idCustomer=" + idCustomer +
+                ", bicycleHashMap=" + bicycleHashMap +
                 '}';
     }
 
@@ -47,7 +58,8 @@ public class Sales {
         private int id;
         private Date date;
         private float totalAmount;
-        private Customer customer;
+        private int idCustomer;
+        private HashMap<Integer, Integer> bicycleHashMap;
 
         public Builder setId(int id) {
             this.id = id;
@@ -64,8 +76,13 @@ public class Sales {
             return this;
         }
 
-        public Builder setCustomer(Customer customer) {
-            this.customer = customer;
+        public Builder setIdCustomer(int idCustomer) {
+            this.idCustomer = idCustomer;
+            return this;
+        }
+
+        public Builder setBicycleHashMap(HashMap<Integer, Integer> bicycleHashMap) {
+            this.bicycleHashMap = bicycleHashMap;
             return this;
         }
 
