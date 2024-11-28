@@ -31,13 +31,19 @@ public class SalesmanRepository implements ISalesmanRepository {
 
     @Override
     public Salesman read(Integer id){
-        for(Salesman e : salesmanList) {
-            if (e.getId() == id)
-                return e;
-        }
-        return null;
+//        for(Salesman e : salesmanList) {
+//            if (e.getId() == id)
+//                return e;
+//        }
+//        return null;
 
         //Hmk: Lambda expressions
+
+        Salesman salesman = salesmanList.stream()
+                .filter(s -> s.getId() == id)
+                .findAny()
+                .orElse(null);
+        return salesman;
     }
 
     @Override

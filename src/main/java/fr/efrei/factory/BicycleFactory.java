@@ -24,12 +24,7 @@ public class BicycleFactory {
             return null;
         }
 
-        return new Bicycle.Builder().setId(id)
-                    .setBrand(brand)
-                    .setModel(model)
-                    .setPrice(price)
-                    .setBicycle(type)
-                    .build();
+        return new Bicycle(id, brand, model, price, type);
     }
 
     private static boolean isValidBicycleType(BicycleType type) {

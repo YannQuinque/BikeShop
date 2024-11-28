@@ -2,8 +2,6 @@ package fr.efrei.factory;
 
 import fr.efrei.domain.Sales;
 import fr.efrei.domain.Customer;
-import fr.efrei.domain.Bicycle;
-import fr.efrei.util.Helper;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -25,11 +23,10 @@ public class SalesFactory {
             return null;
         }
 
-        return new Sales.Builder().setId(id)
-                    .setDate(date)
-                    .setTotalAmount(totalAmount)
-                    .setCustomer(customer);
-                    .setBicycles(new ArrayList<>());
-                    .build();
+        Sales sales = new Sales(id, date, totalAmount);
+        sales.setCustomer(customer);
+        sales.setBicycles(new ArrayList<>());
+        
+        return sales;
     }
 }
