@@ -7,51 +7,81 @@ public class Bicycle {
     private float price;
     private BicycleType type;
 
-    public Bicycle(int id, String brand, String model, float price, BicycleType type) {
-        this.id = id;
-        this.brand = brand;
-        this.model = model;
-        this.price = price;
-        this.type = type;
+    private Bicycle() {}
+
+    private Bicycle(Builder builder) {
+        this.id = builder.id;
+        this.brand = builder.brand;
+        this.model = builder.model;
+        this.price = builder.price;
+        this.type = builder.type;
     }
 
     public int getId() {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public String getBrand() {
         return brand;
-    }
-
-    public void setBrand(String brand) {
-        this.brand = brand;
     }
 
     public String getModel() {
         return model;
     }
 
-    public void setModel(String model) {
-        this.model = model;
-    }
-
     public float getPrice() {
         return price;
-    }
-
-    public void setPrice(float price) {
-        this.price = price;
     }
 
     public BicycleType getType() {
         return type;
     }
 
-    public void setType(BicycleType type) {
-        this.type = type;
+    @Override
+    public String toString() {
+        return "Bicycle{" +
+                "id=" + id +
+                ", brand='" + brand + '\'' +
+                ", model='" + model + '\'' +
+                ", price=" + price +
+                ", type=" + type +
+                '}';
+    }
+
+    public static class Builder {
+        private int id;
+        private String brand;
+        private String model;
+        private float price;
+        private BicycleType type;
+
+        public Builder setId(int id) {
+            this.id = id;
+            return this;
+        }
+
+        public Builder setBrand(String brand) {
+            this.brand = brand;
+            return this;
+        }
+
+        public Builder setModel(String model) {
+            this.model = model;
+            return this;
+        }
+
+        public Builder setPrice(float price) {
+            this.price = price;
+            return this;
+        }
+
+        public Builder setType(BicycleType type) {
+            this.type = type;
+            return this;
+        }
+
+        public Bicycle build() {
+            return new Bicycle(this);
+        }
     }
 }

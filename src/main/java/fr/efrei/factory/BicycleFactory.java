@@ -3,6 +3,7 @@ package fr.efrei.factory;
 import fr.efrei.domain.Bicycle;
 import fr.efrei.domain.BicycleType;
 import fr.efrei.util.Helper;
+import java.util.Arrays;
 
 public class BicycleFactory {
 
@@ -19,10 +20,19 @@ public class BicycleFactory {
             return null;
         }
 
-        if (type == null) {
+        if (type == null || !isValidBicycleType(type)) {
             return null;
         }
 
-        return new Bicycle(id, brand, model, price, type);
+        return new Bicycle.Builder().setId(id)
+                    .setBrand(brand)
+                    .setModel(model)
+                    .setPrice(price)
+                    .setBicycle(type)
+                    .build();
+    }
+
+    private static boolean isValidBicycleType(BicycleType type) {
+        return Arrays.asList(BicycleType.values()).contains(type);
     }
 }
