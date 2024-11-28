@@ -20,6 +20,21 @@ public class Customer {
         return lastname;
     }
 
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     public String getFirstname() {
         return firstname;
