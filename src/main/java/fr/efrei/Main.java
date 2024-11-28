@@ -4,12 +4,19 @@ import fr.efrei.repository.ISalesmanRepository;
 import fr.efrei.repository.SalesmanRepository;
 import fr.efrei.views.SalesmanView;
 
+import fr.efrei.repository.IBicycleRepository;
+import fr.efrei.repository.BicycleRepository;
+import fr.efrei.views.BicycleView;
+
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         ISalesmanRepository salesmanRepository = SalesmanRepository.getRepository();
         SalesmanView salesmanView = new SalesmanView(salesmanRepository);
+
+        IBicycleRepository bicycleRepository = BicycleRepository.getRepository();
+        BicycleView bicycleView = new BicycleView(bicycleRepository);
 
         String choice;
         Scanner sc = new Scanner(System.in);
@@ -28,7 +35,7 @@ public class Main {
                 case "1" : salesmanView.salesmanMenu();
                 case "2" : break;
                 case "3" : break;
-                case "4" : break;
+                case "4" : bicycleView.bicycleMenu();
                 case "5" : break;
                 default:
                     System.out.println("Error : invalid choice");
