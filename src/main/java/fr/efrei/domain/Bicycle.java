@@ -6,6 +6,7 @@ public class Bicycle {
     private String model;
     private float price;
     private BicycleType type;
+    private int nbStock;
 
     private Bicycle() {}
 
@@ -15,6 +16,7 @@ public class Bicycle {
         this.model = builder.model;
         this.price = builder.price;
         this.type = builder.type;
+        this.nbStock = builder.nbStock;
     }
 
     public int getId() {
@@ -37,6 +39,10 @@ public class Bicycle {
         return type;
     }
 
+    public int getNbStock() {
+        return nbStock;
+    }
+
     @Override
     public String toString() {
         return "Bicycle{" +
@@ -45,6 +51,7 @@ public class Bicycle {
                 ", model='" + model + '\'' +
                 ", price=" + price +
                 ", type=" + type +
+                ", nbStock=" + nbStock +
                 '}';
     }
 
@@ -54,6 +61,7 @@ public class Bicycle {
         private String model;
         private float price;
         private BicycleType type;
+        private int nbStock;
 
         public Builder setId(int id) {
             this.id = id;
@@ -77,6 +85,11 @@ public class Bicycle {
 
         public Builder setType(BicycleType type) {
             this.type = type;
+            return this;
+        }
+
+        public Builder setNbStock(int nbStock) {
+            this.nbStock = nbStock;
             return this;
         }
 
