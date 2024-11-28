@@ -5,15 +5,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BicycleRepository implements IBicycleRepository {
-    private static IBicycleRepository repository = null;
+    private static BicycleRepository repository = null; 
     private List<Bicycle> bicycleList;
 
     private BicycleRepository() {
-        bicycleList = new ArrayList<Bicycle>();
+        bicycleList = new ArrayList<>(); 
     }
 
-    public static IBicycleRepository getRepository() {
-        if(repository == null) {
+    public static BicycleRepository getRepository() { 
+        if (repository == null) {
             repository = new BicycleRepository();
         }
         return repository;
@@ -21,46 +21,55 @@ public class BicycleRepository implements IBicycleRepository {
 
     @Override
     public Bicycle create(Bicycle bicycle) {
-        boolean success = bicycleList.add(bicycle);
-        if(success) {
-            return bicycle;
+        if (bicycle == null) {
+            return null;
         }
-        return null;
+        if (read(bicycle.getId()) != null) {
+            return null; 
+        }
+        bicycleList.add(bicycle);
+        return bicycle;
     }
 
     @Override
     public Bicycle read(Integer id) {
-        for(Bicycle b : bicycleList) {
-            if(b.getId() == id)
-                return b;
+        if (id == null || id <= 0) {
+            return null;
         }
-        return null;
+        return bicycleList.stream()
+                .filter(b -> b.getId() == id)
+                .findFirst()
+                .orElse(null);
     }
 
     @Override
     public Bicycle update(Bicycle bicycle) {
-        int id = bicycle.getId();
-        Bicycle bicycleOld = read(id);
-        if(bicycleOld == null)
+        if (bicycle == null) {
             return null;
-        boolean success = delete(id);
-        if(success) {
-            if(bicycleList.add(bicycle))
-                return bicycle;
         }
-        return null;
+        Bicycle existingBicycle = read(bicycle.getId());
+        if (existingBicycle == null) {
+            return null;
+        }
+        delete(bicycle.getId());
+        bicycleList.add(bicycle);
+        return bicycle;
     }
 
     @Override
     public boolean delete(Integer id) {
-        Bicycle bicycleToDelete = read(id);
-        if(bicycleToDelete == null)
+        if (id == null || id <= 0) {
             return false;
-        return(bicycleList.remove(bicycleToDelete));
+        }
+        Bicycle bicycleToDelete = read(id);
+        if (bicycleToDelete == null) {
+            return false;
+        }
+        return bicycleList.remove(bicycleToDelete);
     }
 
     @Override
     public List<Bicycle> getall() {
-        return bicycleList;
+        return new ArrayList<>(bicycleList);
     }
 }
