@@ -6,6 +6,7 @@ import fr.efrei.domain.Bicycle;
 import fr.efrei.util.Helper;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 
 public class SalesFactory {
     public static Sales buildSales(int id, Date date, float totalAmount, int idCustomer) {
@@ -29,7 +30,7 @@ public class SalesFactory {
                     .setDate(date)
                     .setTotalAmount(totalAmount)
                     .setIdCustomer(idCustomer)
-                    .setBicycleHashMap(new ArrayList<>())
+                    .setBicycleHashMap(new HashMap<>())
                     .build();
     }
 }
