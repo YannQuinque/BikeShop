@@ -8,6 +8,10 @@ import fr.efrei.repository.IBicycleRepository;
 import fr.efrei.repository.BicycleRepository;
 import fr.efrei.views.BicycleView;
 
+import fr.efrei.repository.ISalesRepository;
+import fr.efrei.repository.SalesRepository;
+import fr.efrei.views.SalesView;
+
 import java.util.Scanner;
 
 public class Main {
@@ -17,6 +21,9 @@ public class Main {
 
         IBicycleRepository bicycleRepository = BicycleRepository.getRepository();
         BicycleView bicycleView = new BicycleView(bicycleRepository);
+
+        ISalesRepository salesRepository = SalesRepository.getRepository();
+        SalesView salesView = new SalesView(salesRepository);
 
         String choice;
         Scanner sc = new Scanner(System.in);
@@ -34,7 +41,7 @@ public class Main {
             switch (choice){
                 case "1" : salesmanView.salesmanMenu();
                 case "2" : break;
-                case "3" : break;
+                case "3" : salesView.salesMenu();
                 case "4" : bicycleView.bicycleMenu();
                 case "5" : break;
                 default:
