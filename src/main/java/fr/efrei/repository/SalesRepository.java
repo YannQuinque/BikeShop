@@ -12,7 +12,7 @@ public class SalesRepository implements ISalesRepository {
         salesList = new ArrayList<>();
     }
 
-    public static SalesRepository getRepository() { 
+    public static SalesRepository getRepository() {
         if (repository == null) {
             repository = new SalesRepository();
         }
@@ -25,7 +25,7 @@ public class SalesRepository implements ISalesRepository {
             return null;
         }
         if (read(sales.getId()) != null) {
-            return null; 
+            return null;
         }
         salesList.add(sales);
         return sales;
@@ -70,6 +70,6 @@ public class SalesRepository implements ISalesRepository {
 
     @Override
     public List<Sales> getall() {
-        return new ArrayList<>(salesList); 
+        return new ArrayList<>(salesList);
     }
 }
