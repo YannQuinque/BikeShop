@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class BicycleView {
-    private static IBicycleRepository bicycleRepository;
+    static IBicycleRepository bicycleRepository;
 
     public BicycleView() {
     }
