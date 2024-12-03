@@ -12,6 +12,10 @@ import fr.efrei.repository.ISalesRepository;
 import fr.efrei.repository.SalesRepository;
 import fr.efrei.views.SalesView;
 
+import fr.efrei.views.CustomerView;
+import fr.efrei.repository.ICustomerRepository;
+import fr.efrei.repository.CustomerRepository;
+
 import java.util.Scanner;
 
 public class Main {
@@ -24,6 +28,8 @@ public class Main {
 
         ISalesRepository salesRepository = SalesRepository.getRepository();
         SalesView salesView = new SalesView(salesRepository);
+        ICustomerRepository customerRepository=CustomerRepository.getRepository();
+        CustomerView customerView=new CustomerView(customerRepository);
 
         String choice;
         Scanner sc = new Scanner(System.in);
@@ -40,10 +46,9 @@ public class Main {
 
             switch (choice){
                 case "1" : salesmanView.salesmanMenu();
-                case "2" : break;
+                case "2" : customerView.customerMenu();
                 case "3" : salesView.salesMenu();
                 case "4" : bicycleView.bicycleMenu();
-                case "5" : break;
                 default:
                     System.out.println("Error : invalid choice");
             }
