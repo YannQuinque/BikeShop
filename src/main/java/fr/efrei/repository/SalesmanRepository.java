@@ -7,7 +7,7 @@ import java.util.List;
 
 public class SalesmanRepository implements ISalesmanRepository {
     private static ISalesmanRepository repository = null;
-    private List<Salesman> salesmanList;
+    private static List<Salesman> salesmanList;
 
     private SalesmanRepository(){
         salesmanList = new ArrayList<Salesman>();

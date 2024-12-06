@@ -4,7 +4,10 @@ import fr.efrei.domain.Salesman;
 import fr.efrei.util.Helper;
 
 public class SalesmanFactory {
-    public static Salesman buildSalesman(String firstName, String lastName, int moneyInCheckout, int numberOfSales, int id){
+    public static Salesman buildSalesman(int id, String firstName, String lastName, int moneyInCheckout, int numberOfSales){
+        if(id <= 0){
+            return null;
+        }
         if(Helper.isNullOrEmpty(firstName) || Helper.isNullOrEmpty(lastName))
             return null;
 
@@ -13,10 +16,6 @@ public class SalesmanFactory {
         }
 
         if(numberOfSales <= 0.0){
-            return null;
-        }
-
-        if(id <= 0){
             return null;
         }
 
