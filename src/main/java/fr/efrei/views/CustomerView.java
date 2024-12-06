@@ -110,7 +110,7 @@ public class CustomerView {
         String email = sc.nextLine();
         email = email.isEmpty() ? currentCustomer.getEmail() : email;
 
-        Customer updatedCustomer= CustomerFactory.buildCustomer(LastName,FirstName,id);
+        Customer updatedCustomer= CustomerFactory.buildCustomer(LastName,FirstName,id,email);
         if (updatedCustomer != null) {
             customerRepository.update(updatedCustomer);
             System.out.println("Bicycle updated successfully.");
