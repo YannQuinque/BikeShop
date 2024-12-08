@@ -31,22 +31,18 @@ public class SalesView {
         float totalAmount;
         System.out.println("Please enter the following information:");
 
-        // Sale ID
         System.out.println("Sale ID:");
         id = sc.nextInt();
-        sc.nextLine(); // consume newline
+        sc.nextLine(); 
 
-        // Customer ID
         System.out.println("Customer ID:");
         idCustomer = sc.nextInt();
-        sc.nextLine(); // consume newline
+        sc.nextLine(); 
 
-        // Total Amount
         System.out.println("Total Amount:");
         totalAmount = sc.nextFloat();
-        sc.nextLine(); // consume newline
+        sc.nextLine(); 
 
-        // Sale Date
         System.out.println("Date (YYYY-MM-DD):");
         String dateStr = sc.nextLine();
 
@@ -57,10 +53,9 @@ public class SalesView {
             date = dateFormat.parse(dateStr);
         } catch (ParseException e) {
             System.out.println("Invalid date format. Please use YYYY-MM-DD.");
-            return; // Exit the method if the date format is incorrect
+            return; 
         }
 
-        // Initialize and populate bicycleHashMap
         HashMap<Integer, Integer> bicycleHashMap = new HashMap<>();
 
         while (true) {
@@ -72,32 +67,29 @@ public class SalesView {
 
             System.out.println("Enter Bicycle ID:");
             int bicycleId = sc.nextInt();
-            sc.nextLine(); // Consume newline
+            sc.nextLine();
 
             System.out.println("Enter quantity:");
             int quantity = sc.nextInt();
-            sc.nextLine(); // Consume newline
+            sc.nextLine(); 
 
-            // Retrieve and update bicycle stock
             Bicycle bicycle = bicycleRepository.read(bicycleId);
 
             if (bicycle != null && bicycle.getNbStock() >= quantity) {
-                // Create a new Bicycle instance with updated stock using the Builder pattern
                 Bicycle updatedBicycle = new Bicycle.Builder()
                         .setId(bicycle.getId())
                         .setBrand(bicycle.getBrand())
                         .setModel(bicycle.getModel())
                         .setPrice(bicycle.getPrice())
                         .setType(bicycle.getType())
-                        .setNbStock(bicycle.getNbStock() - quantity) // Update stock
+                        .setNbStock(bicycle.getNbStock() - quantity) 
                         .build();
 
-                // Update repository with new Bicycle instance
                 bicycleRepository.update(updatedBicycle);
                 bicycleHashMap.put(bicycleId, quantity);
             } else {
                 System.out.println("Not enough stock for Bicycle ID: " + bicycleId);
-                return; // Exit if any item cannot be fulfilled
+                return; 
             }
         }
 
@@ -190,35 +182,31 @@ public class SalesView {
 
         System.out.println("Enter new details (press enter to keep current value):");
 
-        // Update date
         System.out.println("Current date: " + existingSale.getDate());
         System.out.println("New date (YYYY-MM-DD):");
         String dateStr = sc.nextLine();
 
-        Date date = existingSale.getDate(); // Default to current date if input is empty
+        Date date = existingSale.getDate(); 
         if (!dateStr.isEmpty()) {
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
             try {
                 date = dateFormat.parse(dateStr);
             } catch (ParseException e) {
                 System.out.println("Invalid date format. Please use YYYY-MM-DD.");
-                return; // Exit the method if the date format is incorrect
+                return;
             }
         }
 
-        // Update total amount
         System.out.println("Current total amount: " + existingSale.getTotalAmount());
         System.out.println("New total amount:");
         String totalAmountStr = sc.nextLine();
         float totalAmount = totalAmountStr.isEmpty() ? existingSale.getTotalAmount() : Float.parseFloat(totalAmountStr);
 
-        // Update customer ID
         System.out.println("Current customer ID: " + existingSale.getIdCustomer());
         System.out.println("New customer ID:");
         String idCustomerStr = sc.nextLine();
         int idCustomer = idCustomerStr.isEmpty() ? existingSale.getIdCustomer() : Integer.parseInt(idCustomerStr);
 
-        // Update bicycleHashMap
         HashMap<Integer, Integer> bicycleHashMap = new HashMap<>(existingSale.getBicycleHashMap());
 
         while (true) {
@@ -230,11 +218,11 @@ public class SalesView {
 
             System.out.println("Enter Bicycle ID:");
             int bicycleId = sc.nextInt();
-            sc.nextLine(); // Consume newline
+            sc.nextLine();
 
             System.out.println("Enter quantity:");
             int quantity = sc.nextInt();
-            sc.nextLine(); // Consume newline
+            sc.nextLine(); 
 
             bicycleHashMap.put(bicycleId, quantity);
         }
