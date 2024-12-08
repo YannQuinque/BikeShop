@@ -35,7 +35,7 @@ public class BicycleView {
         model = sc.nextLine();
         System.out.println("Bicycle price:");
         price = sc.nextFloat();
-        System.out.println("Bicycle type (ROAD, MOUNTAIN, CITY):");
+        System.out.println("Bicycle type (ROAD, MOUNTAIN, CITY, BMX):");
         type = BicycleType.valueOf(sc.next().toUpperCase());
         System.out.println("Number in stock:");
         nbStock = sc.nextInt();
@@ -115,7 +115,7 @@ public class BicycleView {
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter the ID of the bicycle to update:");
         int id = sc.nextInt();
-        sc.nextLine(); // Consume newline
+        sc.nextLine();
 
         Bicycle existingBicycle = bicycleRepository.read(id);
         if (existingBicycle == null) {

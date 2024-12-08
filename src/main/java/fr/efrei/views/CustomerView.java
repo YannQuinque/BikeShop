@@ -85,7 +85,7 @@ public class CustomerView {
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter the ID of the customer to update:");
         int id = sc.nextInt();
-        sc.nextLine(); // Consume newline
+        sc.nextLine(); 
 
         Customer currentCustomer = customerRepository.read(id);
         if (currentCustomer == null) {
