@@ -115,7 +115,7 @@ public class BicycleView {
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter the ID of the bicycle to update:");
         int id = sc.nextInt();
-        sc.nextLine(); // Consume newline
+        sc.nextLine();
 
         Bicycle existingBicycle = bicycleRepository.read(id);
         if (existingBicycle == null) {
