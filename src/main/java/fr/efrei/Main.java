@@ -45,10 +45,10 @@ public class Main {
             choice = sc.nextLine();
 
             switch (choice){
-                case "1" : salesmanView.salesmanMenu();
-                case "2" : customerView.customerMenu();
-                case "3" : salesView.salesMenu();
-                case "4" : bicycleView.bicycleMenu();
+                case "1" : salesmanView.salesmanMenu();break;
+                case "2" : customerView.customerMenu();break;
+                case "3" : salesView.salesMenu();break;
+                case "4" : bicycleView.bicycleMenu();break;
                 case "5": System.out.println("Exiting Main Menu.");break;
                 default:
                     System.out.println("Error : invalid choice");
