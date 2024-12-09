@@ -49,6 +49,7 @@ public class Main {
                 case "2" : customerView.customerMenu();
                 case "3" : salesView.salesMenu();
                 case "4" : bicycleView.bicycleMenu();
+                case "5": System.out.println("Exiting Main Menu.");break;
                 default:
                     System.out.println("Error : invalid choice");
             }

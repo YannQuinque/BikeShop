@@ -1,8 +1,6 @@
 package fr.efrei.views;
 
-import fr.efrei.domain.Bicycle;
 import fr.efrei.domain.Salesman;
-import fr.efrei.factory.BicycleFactory;
 import fr.efrei.factory.SalesmanFactory;
 import fr.efrei.repository.ISalesmanRepository;
 
@@ -22,21 +20,17 @@ public class SalesmanView {
     public static void createSalesman() {
         Scanner sc = new Scanner(System.in);
         String firstName, lastName;
-        int moneyInCheckout, numberOfSales, id;
+        int id;
 
         System.out.println("Please enter the following  information : ");
         System.out.println("Salesman first name : ");
         firstName = sc.nextLine();
         System.out.println("Salesman last name : ");
         lastName = sc.nextLine();
-        System.out.println("Salesman money in checkout : ");
-        moneyInCheckout = sc.nextInt();
-        System.out.println("Salesman number of sales : ");
-        numberOfSales = sc.nextInt();
         System.out.println("Salesman id : ");
         id = sc.nextInt();
 
-        Salesman salesman = SalesmanFactory.buildSalesman(id, firstName, lastName, moneyInCheckout, numberOfSales);
+        Salesman salesman = SalesmanFactory.buildSalesman(id, firstName, lastName);
 
         if (salesman != null) {
             salesmanRepository.create(salesman);
@@ -91,17 +85,7 @@ public class SalesmanView {
         String lastName = sc.nextLine();
         lastName = lastName.isEmpty() ? salesmanOld.getLastName() : lastName;
 
-        System.out.println("Current money in checkout: " + salesmanOld.getMoneyInCheckout());
-        System.out.println("New money in checkout:");
-        String micStr = sc.nextLine();
-        int moneyInCheckout = micStr.isEmpty() ? salesmanOld.getMoneyInCheckout() : Integer.parseInt(micStr);
-
-        System.out.println("Current number of sales: " + salesmanOld.getNumberOfSales());
-        System.out.println("New number of sales:");
-        String salesStr = sc.nextLine();
-        int numberOfSales = salesStr.isEmpty() ? salesmanOld.getNumberOfSales() : Integer.parseInt(salesStr);
-
-        Salesman updatedSalesman = SalesmanFactory.buildSalesman(id, firstName, lastName, moneyInCheckout, numberOfSales);
+        Salesman updatedSalesman = SalesmanFactory.buildSalesman(id, firstName, lastName);
         if (updatedSalesman != null) {
             salesmanRepository.update(updatedSalesman);
             System.out.println("Salesman updated successfully.");
