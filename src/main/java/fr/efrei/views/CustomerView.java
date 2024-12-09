@@ -139,6 +139,9 @@ public class CustomerView {
                 case "3" : updateCustomer(); break;
                 case "4" : deleteCustomer();break;
                 case "5" : showCustomer(); break;
+                case "6":
+                    System.out.println("Exiting customer menu");
+                    break;
                 default:
                     System.out.println("Error : invalid command");
             }
