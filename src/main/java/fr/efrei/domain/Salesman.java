@@ -1,5 +1,6 @@
 package fr.efrei.domain;
 
+//Salesman class
 public class Salesman {
     private String firstName;
     private String lastName;

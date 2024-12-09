@@ -1,5 +1,6 @@
 package fr.efrei.factory;
 
+//Salesman Factory
 import fr.efrei.domain.Salesman;
 import fr.efrei.util.Helper;
 

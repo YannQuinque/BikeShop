@@ -1,5 +1,6 @@
 package fr.efrei.views;
 
+//Salesman View
 import fr.efrei.domain.Salesman;
 import fr.efrei.factory.SalesmanFactory;
 import fr.efrei.repository.ISalesmanRepository;

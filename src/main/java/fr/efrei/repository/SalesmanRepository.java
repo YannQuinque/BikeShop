@@ -1,5 +1,6 @@
 package fr.efrei.repository;
 
+//Salesman Repository
 import fr.efrei.domain.Salesman;
 
 import java.util.ArrayList;
